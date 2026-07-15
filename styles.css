@@ -6,3 +6,7 @@
     margin: 0 auto;
     border: 5px solid black
 }
+
+.hover {
+    background-color: black;
+}
