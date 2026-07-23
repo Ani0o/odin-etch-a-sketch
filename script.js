@@ -35,9 +35,15 @@ grid.addEventListener("mouseover", (event) => {
         const randomRed =  Math.floor(Math.random() * 256);
         const randomGreen =  Math.floor(Math.random() * 256);
         const randomBlue =  Math.floor(Math.random() * 256);
-        let opacity = window.getComputedStyle(event.target).opacity;
+        const bg = window.getComputedStyle(event.target).backgroundColor;
+        let opacity = bg.slice(bg.lastIndexOf(",") + 2, bg.lastIndexOf(")"));
 
-        event.target.style.setProperty("--random-color", `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`);
-        event.target.style.setProperty("--opacity", Number(opacity) + 0.1);
+        const checkBg = bg.split(",");
+
+        if (checkBg.length !== 3) {
+            event.target.style.setProperty("--random-color", `rgba(${randomRed}, ${randomGreen}, ${randomBlue}, ${Number(opacity) + 0.1})`);
+        } else {
+            event.target.style.setProperty("--random-color", `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`);
+        }
     }
 })

@@ -8,8 +8,7 @@
 }
 
 .hover {
-    background-color: var(--random-color, rgb(0, 0, 0));
-    opacity: var(--opacity, 0.0);
+    background-color: var(--random-color, rgba(0, 0, 0, 0.0));
 }
 
 #size-button {
