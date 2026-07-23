@@ -32,12 +32,12 @@ grid.addEventListener("mouseover", (event) => {
     
     if (event.target.classList.contains("hover")) {
 
-        // The number 16777215 comes from the fact that the red, green and blue values each range
-        // from 0 to 255 so the total number of possible color combinations are 256 x 256 x 256 = 16,777,216.
-        // By multiplying by 16777215, we map the random decimal to a range between 0 and 16777215.
+        const randomRed =  Math.floor(Math.random() * 256);
+        const randomGreen =  Math.floor(Math.random() * 256);
+        const randomBlue =  Math.floor(Math.random() * 256);
+        let opacity = window.getComputedStyle(event.target).opacity;
 
-        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
-
-        event.target.style.setProperty("--random-bg", randomColor);
+        event.target.style.setProperty("--random-color", `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`);
+        event.target.style.setProperty("--opacity", Number(opacity) + 0.1);
     }
 })
